@@ -1,10 +1,8 @@
-import { BOARD } from "../../game_logic/helpers"
 import Row from "./Row"
 import './Board.css'
 import { useState } from 'react'
 
-const Board = ( {selectedShip, selectedPosition} ) => {
-    const [board, setBoard] = useState(BOARD)
+const Board = ( { board, setBoard, selectedShip, selectedPosition} ) => {
     const [shipsPlaced, setShipsPlaced] = useState([])
 
     return (

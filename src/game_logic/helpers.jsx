@@ -23,6 +23,8 @@ export const ships = [LANCHA, SUBMARINO, CRUCERO, PORTAAVIONES]
 //BOARD
 export const E = 'empty'
 export const S = 'ship'
+export const H = 'hit'
+export const M = 'miss'
 
 export const BOARD = [
     [E,E,E,E,E,E,E,E,E,E],
