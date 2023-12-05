@@ -1,0 +1,48 @@
+import './ShipSelector'
+
+const ShipSelector = ( { setSelectedShip, setSelectedPosition } ) => {
+
+    const handleShipChange = () => {
+        setSelectedShip(event.target.value)
+    }
+    const handlePositionChange = () => {
+        setSelectedPosition(event.target.value)
+    }
+
+    return (
+        <div>
+            <div className="ShipSelector" onChange={handleShipChange}>
+                <h2>Selecciona Barco</h2>
+                <div>
+                    <input type="radio" key='rad_avion' name='ship' value={3}></input>
+                    <label htmlFor='rad_avion'>PORTAAVIONES</label>            
+                </div>
+                <div>
+                    <input type="radio" key='rad_cruc' name='ship' value={2}></input>
+                    <label htmlFor='rad_cruc'>CRUCERO</label>
+                </div>
+                <div>
+                    <input type="radio" key='rad_sub' name='ship' value={1}></input>
+                    <label htmlFor='rad_sub'>SUBMARINO</label>
+                </div>
+                <div>
+                    <input type="radio" key='rad_lancha' name='ship' value={0}></input>
+                    <label htmlFor='rad_lancha'>LANCHA</label>
+                </div>
+            </div>
+            <div className='ShipPositionSelector' onChange={handlePositionChange}>
+                <h2>Selecciona posicion</h2>
+                <div>
+                    <input type="radio" key='vertical' name='position' value={1}></input>
+                    <label htmlFor='vertical'>VERTICAL</label>
+                </div>
+                <div>
+                    <input type="radio" key='horizontal' name='position' value={0}></input>
+                    <label htmlFor='horizontal'>HORIZONTAL</label>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default ShipSelector

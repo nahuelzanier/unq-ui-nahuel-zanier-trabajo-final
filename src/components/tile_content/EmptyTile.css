@@ -1,0 +1,8 @@
+.EmptyTile {
+    margin: 4px;
+    border: 1px solid black;
+    background-color: darkgray;
+    height: 40px;
+    width: 40px;
+    border-radius: 10%; 
+}
