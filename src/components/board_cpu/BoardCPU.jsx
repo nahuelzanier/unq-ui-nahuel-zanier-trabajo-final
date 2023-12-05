@@ -1,10 +1,10 @@
-import { BOARD } from "../../game_logic/helpers"
-import Row from "./Row"
-import './Board.css'
+import { BOARD, cpu_board } from "../../game_logic/helpers"
+import Row from "../board/Row"
+import './BoardCPU.css'
 import { useState } from 'react'
 
-const Board = ( {selectedShip, selectedPosition} ) => {
-    const [board, setBoard] = useState(BOARD)
+const BoardCPU = ( {selectedShip, selectedPosition} ) => {
+    const [board, setBoard] = useState(cpu_board())
     const [shipsPlaced, setShipsPlaced] = useState([])
 
     return (
@@ -26,4 +26,4 @@ const Board = ( {selectedShip, selectedPosition} ) => {
     )
 }
 
-export default Board
+export default BoardCPU

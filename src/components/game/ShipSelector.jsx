@@ -1,12 +1,15 @@
-import './ShipSelector'
+import './ShipSelector.css'
 
-const ShipSelector = ( { setSelectedShip, setSelectedPosition } ) => {
+const ShipSelector = ( { setSelectedShip, setSelectedPosition, setGameStart } ) => {
 
     const handleShipChange = () => {
         setSelectedShip(event.target.value)
     }
     const handlePositionChange = () => {
         setSelectedPosition(event.target.value)
+    }
+    const handleGameStart = () => {
+        setGameStart(true)
     }
 
     return (
@@ -41,6 +44,7 @@ const ShipSelector = ( { setSelectedShip, setSelectedPosition } ) => {
                     <label htmlFor='horizontal'>HORIZONTAL</label>
                 </div>
             </div>
+            <button className="start_button" onClick={handleGameStart}>START BATTLE</button>
         </div>
     )
 }
