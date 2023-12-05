@@ -5,11 +5,25 @@ import EmptyTile from '../tile_content/EmptyTile'
 import Miss from '../tile_content/Miss'
 import Hit from '../tile_content/Hit'
 
-const Tile = ( { againstPlayer, isPlayer, gameStart, myTurn, turn, setTurn, x, y, board, setBoard, selectedShip, selectedPosition, shipsPlaced, setShipsPlaced } ) => {
+const Tile = ( { 
+    againstPlayer,
+    isPlayer, 
+    gameStart, 
+    myTurn, 
+    turn, 
+    setTurn, 
+    killCount, 
+    setKillCount,
+    x, 
+    y, 
+    board, 
+    setBoard, 
+    selectedShip, 
+    selectedPosition, 
+    shipsPlaced, 
+    setShipsPlaced } ) => {
     
     const handleClick = () => {
-        console.log(turn)
-        console.log(myTurn)
         if (!gameStart){
             placeShip()
         }
@@ -39,12 +53,23 @@ const Tile = ( { againstPlayer, isPlayer, gameStart, myTurn, turn, setTurn, x, y
             y_pos = Math.floor(Math.random()*10)
             i++
         }
+
+        if (temp[x_pos][y_pos]==S){
+            let kill = killCount.slice()
+            kill[turn] = kill[turn]+1
+            setKillCount(kill)
+        }
         temp[x_pos][y_pos] = temp[x_pos][y_pos]==S ? H : M
         setBoard([...temp])
     }
 
     const attack = (x_pos, y_pos) => {
         let temp = [...board]
+        if (temp[x_pos][y_pos]==S){
+            let kill = killCount.slice()
+            kill[turn] = kill[turn]+1
+            setKillCount(kill)
+        }
         temp[x_pos][y_pos] = temp[x_pos][y_pos]==S ? H : M
         setBoard([...temp])
     }
@@ -105,7 +130,7 @@ const Tile = ( { againstPlayer, isPlayer, gameStart, myTurn, turn, setTurn, x, y
                 return <Miss />;
                 break;
             default:
-                return <div>Something when wrong</div>
+                return <div>Something went wrong</div>
         }
     }
 
@@ -124,7 +149,7 @@ const Tile = ( { againstPlayer, isPlayer, gameStart, myTurn, turn, setTurn, x, y
                 return <Miss />;
                 break;
             default:
-                return <div>Something when wrong</div>
+                return <div>Something went wrong</div>
         }
     }
 

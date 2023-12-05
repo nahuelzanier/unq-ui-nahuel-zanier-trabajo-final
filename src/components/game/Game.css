@@ -1,5 +1,12 @@
 .Game {
 
     display: flex;
+    margin-left: 50px;
 }
 
+.Title {
+    margin-left: 460px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 50px;
+    font-style: oblique;
+}

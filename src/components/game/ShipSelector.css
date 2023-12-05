@@ -3,9 +3,26 @@
     display:grid
 }
 
+.shipSelect {
+
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 5px;
+    margin-top: 40px;
+}
+
 .start_button {
 
     font-size: large;
-    margin-top: 120px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: 100px;
     padding: 50px;
+}
+
+.label {
+
+    font-family: 'Courier New', Courier, monospace;
+    font-size: larger;
+    font-style: oblique;
 }

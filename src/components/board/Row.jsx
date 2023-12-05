@@ -1,7 +1,23 @@
 import Tile from "./Tile"
 import './Row.css'
 
-const Row = ( { againstPlayer, isPlayer, gameStart, myTurn, turn, setTurn, tiles, y, board, setBoard, selectedShip, selectedPosition, shipsPlaced, setShipsPlaced } ) => {    
+const Row = ( { 
+    againstPlayer, 
+    isPlayer, 
+    gameStart, 
+    myTurn, 
+    turn, 
+    setTurn, 
+    killCount, 
+    setKillCount,
+    tiles, 
+    y, 
+    board, 
+    setBoard, 
+    selectedShip, 
+    selectedPosition, 
+    shipsPlaced, 
+    setShipsPlaced } ) => {    
     return (
         <div className='Row'>
             {
@@ -12,6 +28,8 @@ const Row = ( { againstPlayer, isPlayer, gameStart, myTurn, turn, setTurn, tiles
                                                   myTurn={myTurn}
                                                   turn={turn}
                                                   setTurn={setTurn}
+                                                  killCount={killCount}
+                                                  setKillCount={setKillCount}
                                                   y={y}
                                                   x={index}
                                                   board={board}

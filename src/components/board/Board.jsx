@@ -2,10 +2,27 @@ import Row from "./Row"
 import './Board.css'
 import { useState } from 'react'
 
-const Board = ( { againstPlayer, isPlayer, gameStart, myTurn, turn, setTurn, board, setBoard, selectedShip, selectedPosition, shipsPlaced, setShipsPlaced } ) => {
+const Board = ( { 
+    againstPlayer,
+    isPlayer, 
+    gameStart, 
+    myTurn, 
+    turn, 
+    setTurn, 
+    killCount,
+    setKillCount,
+    board, 
+    setBoard, 
+    selectedShip, 
+    selectedPosition, 
+    shipsPlaced, 
+    setShipsPlaced } ) => {
+
+
 
     return (
         <div>
+            <h2>Player {killCount}</h2>
             <div className='Board'>
                 {
                     board.map((row, index) => <Row key={index}
@@ -15,6 +32,8 @@ const Board = ( { againstPlayer, isPlayer, gameStart, myTurn, turn, setTurn, boa
                                                 myTurn={myTurn}
                                                 turn={turn}
                                                 setTurn={setTurn}
+                                                killCount={killCount}
+                                                setKillCount={setKillCount}
                                                 tiles={row} 
                                                 y={index} 
                                                 board={board}
