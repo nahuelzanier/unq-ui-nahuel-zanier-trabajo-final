@@ -1,5 +1,5 @@
 import './Tile.css'
-import { E, S, H, M, ships } from '../../game_logic/helpers'
+import { AV, BC, SB, DD, E, S, H, M, ships } from '../../game_logic/helpers'
 import Ship from '../tile_content/Ship'
 import EmptyTile from '../tile_content/EmptyTile'
 import Miss from '../tile_content/Miss'
@@ -8,7 +8,8 @@ import Hit from '../tile_content/Hit'
 const Tile = ( { 
     againstPlayer,
     isPlayer, 
-    gameStart, 
+    gameStart,
+    setAnnouncement,
     myTurn, 
     turn, 
     setTurn, 
@@ -33,7 +34,7 @@ const Tile = ( {
                     if (isPlayer){
                         cpu_attack()
                         setTurn((turn+1)%2)
-                    } else if (board[x][y]!=H && board[x][y]!=M ) {
+                    } else if (board[x][y]!=H && board[x][y]!=M) {
                         attack(x,y)
                         setTurn((turn+1)%2)
                     }
@@ -54,24 +55,49 @@ const Tile = ( {
             i++
         }
 
-        if (temp[x_pos][y_pos]==S){
-            let kill = killCount.slice()
-            kill[turn] = kill[turn]+1
-            setKillCount(kill)
+        if (attackHit(x_pos, y_pos)){
+            updateKillCount(temp[x_pos][y_pos])
+            setAnnouncement(updateAnnouncement(temp[x_pos][y_pos]))
+            temp[x_pos][y_pos] = H
+        } else {
+            temp[x_pos][y_pos] = M
+            setAnnouncement('Fallaste...')
         }
-        temp[x_pos][y_pos] = temp[x_pos][y_pos]==S ? H : M
         setBoard([...temp])
     }
 
     const attack = (x_pos, y_pos) => {
         let temp = [...board]
-        if (temp[x_pos][y_pos]==S){
-            let kill = killCount.slice()
-            kill[turn] = kill[turn]+1
-            setKillCount(kill)
+        if (attackHit(x_pos, y_pos)){
+            updateKillCount(temp[x_pos][y_pos])
+            setAnnouncement(updateAnnouncement(temp[x_pos][y_pos]))
+            temp[x_pos][y_pos] = H
+        } else {
+            temp[x_pos][y_pos] = M
+            setAnnouncement('Fallaste...')
         }
-        temp[x_pos][y_pos] = temp[x_pos][y_pos]==S ? H : M
         setBoard([...temp])
+    }
+
+    const attackHit = (x_pos, y_pos) => {
+        switch (board[x_pos][y_pos]) {
+            case 0:
+                return true;
+            case 1:
+                return true;
+            case 2:
+                return true;
+            case 3:
+                return true;
+            case E:
+                return false;
+            case H:
+                return false;
+            case M:
+                return false;
+            default:
+                return <div>Something went wrong</div>
+        }
     }
 
     const placeShip = () => {
@@ -82,7 +108,7 @@ const Tile = ( {
                 tempShips.push(selectedShip)
                 let temp = [...board]
                 for (let i = 0; i<ships[selectedShip].size; i++){
-                    temp[x][y+i] = S
+                    temp[x][y+i] = ships[selectedShip].selector
                 }
                 setShipsPlaced([...tempShips])
                 setBoard([...temp])
@@ -92,7 +118,7 @@ const Tile = ( {
                 tempShips.push(selectedShip)
                 let temp = [...board]
                 for (let i = 0; i<ships[selectedShip].size; i++){
-                    temp[x+i][y] = S
+                    temp[x+i][y] = ships[selectedShip].selector
                 }
                 setShipsPlaced([...tempShips])
                 setBoard([...temp])
@@ -115,20 +141,36 @@ const Tile = ( {
         return ret
     }
 
+    const updateKillCount = (shipSelector) => {
+        let kill = killCount.slice()
+        kill[ships[shipSelector].selector] = kill[ships[shipSelector].selector] + 1
+        setKillCount(kill)
+    }
+
+    const updateAnnouncement = (index) => {
+        if (ships[index].size - killCount[index] == 1){
+            return ('Hundiste mi ' + ships[index].type + '!!!')
+        } else {
+            return ('Golpeaste a mi ' + ships[index].type + '!')
+        }        
+    }
+
     const updateTile = (tile) => {
         switch (tile) {
-            case S:
+            case 0:
                 return <Ship />;
-                break;
+            case 1:
+                return <Ship />;
+            case 2:
+                return <Ship />;
+            case 3:
+                return <Ship />;
             case E:
                 return <EmptyTile />;
-                break;
             case H:
                 return <Hit />;
-                break;
             case M:
                 return <Miss />;
-                break;
             default:
                 return <div>Something went wrong</div>
         }
@@ -136,18 +178,20 @@ const Tile = ( {
 
     const updateTileHidden = (tile) => {
         switch (tile) {
-            case S:
+            case 0:
                 return <EmptyTile />;
-                break;
+            case 1:
+                return <EmptyTile />;
+            case 2:
+                return <EmptyTile />;
+            case 3:
+                return <EmptyTile />;
             case E:
                 return <EmptyTile />;
-                break;
             case H:
                 return <Hit />;
-                break;
             case M:
                 return <Miss />;
-                break;
             default:
                 return <div>Something went wrong</div>
         }

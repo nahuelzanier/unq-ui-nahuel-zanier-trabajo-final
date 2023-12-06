@@ -3,6 +3,15 @@
     display:grid
 }
 
-.Stats {
+.PlayerName {
+    font-size: 30px;
     font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 10px;
+}
+
+.Stats {
+    margin: 0px;
+    font-size: larger;
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 10px;
 }

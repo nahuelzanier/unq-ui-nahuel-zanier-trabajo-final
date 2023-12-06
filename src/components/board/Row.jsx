@@ -4,7 +4,8 @@ import './Row.css'
 const Row = ( { 
     againstPlayer, 
     isPlayer, 
-    gameStart, 
+    gameStart,
+    setAnnouncement,
     myTurn, 
     turn, 
     setTurn, 
@@ -25,6 +26,7 @@ const Row = ( {
                                                   againstPlayer={againstPlayer}
                                                   isPlayer={isPlayer}
                                                   gameStart={gameStart}
+                                                  setAnnouncement={setAnnouncement}
                                                   myTurn={myTurn}
                                                   turn={turn}
                                                   setTurn={setTurn}

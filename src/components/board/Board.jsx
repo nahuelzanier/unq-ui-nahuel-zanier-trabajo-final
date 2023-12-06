@@ -6,12 +6,11 @@ const Board = ( {
     playerName,
     againstPlayer,
     isPlayer, 
-    gameStart, 
+    gameStart,
+    setAnnouncement,
     myTurn, 
     turn, 
     setTurn, 
-    killCount,
-    setKillCount,
     board, 
     setBoard, 
     selectedShip, 
@@ -19,17 +18,19 @@ const Board = ( {
     shipsPlaced, 
     setShipsPlaced } ) => {
 
-
+    const [killCount, setKillCount] = useState([0,0,0,0])
 
     return (
         <div>
-            <h2 className='Stats'>{playerName}: {killCount[myTurn]}/14 HITS</h2>
+            <h2 className='PlayerName'>{playerName}</h2>
+            <h2 className="Stats">Lancha({2-killCount[0]}) Sub({3-killCount[1]}) Cruecero({4-killCount[2]}) Portaaviones({5-killCount[3]})</h2>
             <div className='Board'>
                 {
                     board.map((row, index) => <Row key={index}
                                                 againstPlayer={againstPlayer}
                                                 isPlayer={isPlayer}
                                                 gameStart={gameStart}
+                                                setAnnouncement={setAnnouncement}
                                                 myTurn={myTurn}
                                                 turn={turn}
                                                 setTurn={setTurn}

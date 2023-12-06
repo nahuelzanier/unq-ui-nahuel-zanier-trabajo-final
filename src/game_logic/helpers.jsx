@@ -1,26 +1,9 @@
 //SHIPS
-const LANCHA = {
-    type: 'lancha',
-    size: 2
-}
-const SUBMARINO = {
-    type: 'submarino',
-    size: 3
-}
-const CRUCERO = {
-    type: 'crucero',
-    size: 4
-}
-const PORTAAVIONES = {
-    type: 'portaaviones',
-    size: 5
-}
-export const ships = [LANCHA, SUBMARINO, CRUCERO, PORTAAVIONES]
-
-
-
-
 //BOARD
+export const AV = 'PORTAAVIONES'
+export const BC = 'CRUCERO'
+export const SB = 'SUBMARINO'
+export const DD = 'LANCHA'
 export const E = 'empty'
 export const S = 'ship'
 export const H = 'hit'
@@ -39,7 +22,31 @@ export const BOARD = [
     [E,E,E,E,E,E,E,E,E,E]
 ]
 
-
+const LANCHA = {
+    type: 'lancha',
+    size: 2,
+    tag: DD,
+    selector: 0
+}
+const SUBMARINO = {
+    type: 'submarino',
+    size: 3,
+    tag: SB,
+    selector: 1
+}
+const CRUCERO = {
+    type: 'crucero',
+    size: 4,
+    tag: BC,
+    selector: 2
+}
+const PORTAAVIONES = {
+    type: 'portaaviones',
+    size: 5,
+    tag: AV,
+    selector: 3
+}
+export const ships = [LANCHA, SUBMARINO, CRUCERO, PORTAAVIONES]
 
 
 //CPU BOARD
@@ -73,11 +80,11 @@ export const cpu_board = () => {
 
         if (position == 1) {
             for (let j = 0; j<shipsToPlace[i].size; j++){
-                board[x_pos][Math.min(y_pos+j, 9)] = S
+                board[x_pos][Math.min(y_pos+j, 9)] = shipsToPlace[i].selector
             }
         } else {
             for (let j = 0; j<shipsToPlace[i].size; j++){
-                board[Math.min(x_pos+j, 9)][y_pos] = S
+                board[Math.min(x_pos+j, 9)][y_pos] = shipsToPlace[i].selector
             }
         }
     }

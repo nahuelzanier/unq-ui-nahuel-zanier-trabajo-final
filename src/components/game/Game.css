@@ -10,3 +10,10 @@
     font-size: 50px;
     font-style: oblique;
 }
+
+.Announcement {
+    margin-left: 0px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    font-style: oblique;
+}
