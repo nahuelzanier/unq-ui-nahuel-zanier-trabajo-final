@@ -2,3 +2,7 @@
     width: 600px;
     display:grid
 }
+
+.Stats {
+    font-family: 'Courier New', Courier, monospace;
+}

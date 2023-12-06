@@ -13,12 +13,14 @@ const Game = () => {
     const [gameStart, setGameStart] = useState(false)
     const [turn, setTurn] = useState(0)
     const [killCount, setKillCount] = useState([0,0])
+    const [player01Name, setPlayer01Name] = useState('Player 01')
 
     return (
         <div>
             <h1 className="Title">BATTLESHIP</h1>
             <div className='Game'>
-                <Board againstPlayer={false}
+                <Board playerName={player01Name}
+                        againstPlayer={false}
                         isPlayer={true}
                         gameStart={gameStart}
                         myTurn={0}
@@ -34,7 +36,8 @@ const Game = () => {
                 {
                 gameStart ?
                 (
-                    <Board againstPlayer={false}
+                    <Board playerName={'CPU'}
+                            againstPlayer={false}
                             isPlayer={false}
                             gameStart={gameStart}
                             myTurn={1}

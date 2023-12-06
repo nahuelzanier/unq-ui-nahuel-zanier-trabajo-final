@@ -3,6 +3,7 @@ import './Board.css'
 import { useState } from 'react'
 
 const Board = ( { 
+    playerName,
     againstPlayer,
     isPlayer, 
     gameStart, 
@@ -22,7 +23,7 @@ const Board = ( {
 
     return (
         <div>
-            <h2>Player {killCount}</h2>
+            <h2 className='Stats'>{playerName}: {killCount[myTurn]}/14 HITS</h2>
             <div className='Board'>
                 {
                     board.map((row, index) => <Row key={index}

@@ -101,14 +101,14 @@ const Tile = ( {
     }
 
     const unnocupiedVertical = () => {
-        let ret = true
+        let ret = y+ships[selectedShip].size <= 10
         for (let i = 0; i<ships[selectedShip].size; i++){
             ret = ret && board[x][y+i]==E
         }
         return ret
     }
     const unnocupiedHorizontal = () => {
-        let ret = true
+        let ret = x+ships[selectedShip].size <= 10
         for (let i = 0; i<ships[selectedShip].size; i++){
             ret = ret && board[x+i][y]==E
         }
