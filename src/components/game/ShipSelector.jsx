@@ -1,6 +1,11 @@
 import './ShipSelector.css'
 
-const ShipSelector = ( { setSelectedShip, setSelectedPosition, setGameStart } ) => {
+const ShipSelector = ( { 
+    setSelectedShip,
+    shipsPlaced,
+    setSelectedPosition,
+    setAnnouncement,
+    setGameStart } ) => {
 
     const handleShipChange = () => {
         setSelectedShip(event.target.value)
@@ -9,7 +14,10 @@ const ShipSelector = ( { setSelectedShip, setSelectedPosition, setGameStart } ) 
         setSelectedPosition(event.target.value)
     }
     const handleGameStart = () => {
-        setGameStart(true)
+        if (shipsPlaced.length == 4){
+            setAnnouncement('Primer disparo')
+            setGameStart(true)
+        }
     }
 
     return (
@@ -44,7 +52,7 @@ const ShipSelector = ( { setSelectedShip, setSelectedPosition, setGameStart } ) 
                     <label className='label' htmlFor='horizontal'>HORIZONTAL</label>
                 </div>
             </div>
-            <button className="start_button" onClick={handleGameStart}>START BATTLE</button>
+            <button className="start_button" onClick={handleGameStart}>EMPEZAR JUEGO</button>
         </div>
     )
 }

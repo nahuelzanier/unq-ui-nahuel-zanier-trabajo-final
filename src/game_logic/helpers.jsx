@@ -9,19 +9,6 @@ export const S = 'ship'
 export const H = 'hit'
 export const M = 'miss'
 
-export const BOARD = [
-    [E,E,E,E,E,E,E,E,E,E],
-    [E,E,E,E,E,E,E,E,E,E],
-    [E,E,E,E,E,E,E,E,E,E],
-    [E,E,E,E,E,E,E,E,E,E],
-    [E,E,E,E,E,E,E,E,E,E],
-    [E,E,E,E,E,E,E,E,E,E],
-    [E,E,E,E,E,E,E,E,E,E],
-    [E,E,E,E,E,E,E,E,E,E],
-    [E,E,E,E,E,E,E,E,E,E],
-    [E,E,E,E,E,E,E,E,E,E]
-]
-
 const LANCHA = {
     type: 'lancha',
     size: 2,

@@ -2,6 +2,8 @@ import Tile from "./Tile"
 import './Row.css'
 
 const Row = ( { 
+    playerName,
+    setPlayerName,
     againstPlayer, 
     isPlayer, 
     gameStart,
@@ -23,6 +25,8 @@ const Row = ( {
         <div className='Row'>
             {
                 tiles.map( (tile, index) => <Tile key={index}
+                                                  playerName={playerName}
+                                                  setPlayerName={setPlayerName}
                                                   againstPlayer={againstPlayer}
                                                   isPlayer={isPlayer}
                                                   gameStart={gameStart}

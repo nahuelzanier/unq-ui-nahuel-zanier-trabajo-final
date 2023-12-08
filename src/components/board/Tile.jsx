@@ -6,6 +6,8 @@ import Miss from '../tile_content/Miss'
 import Hit from '../tile_content/Hit'
 
 const Tile = ( { 
+    playerName,
+    setPlayerName,
     againstPlayer,
     isPlayer, 
     gameStart,
@@ -59,6 +61,9 @@ const Tile = ( {
             updateKillCount(temp[x_pos][y_pos])
             setAnnouncement(updateAnnouncement(temp[x_pos][y_pos]))
             temp[x_pos][y_pos] = H
+            if (gameFinished()){
+                setPlayerName(playerName + ': FLOTA DESTRUIDA')
+            }
         } else {
             temp[x_pos][y_pos] = M
             setAnnouncement('Fallaste...')
@@ -72,6 +77,9 @@ const Tile = ( {
             updateKillCount(temp[x_pos][y_pos])
             setAnnouncement(updateAnnouncement(temp[x_pos][y_pos]))
             temp[x_pos][y_pos] = H
+            if (gameFinished()){
+                setPlayerName(playerName + ': FLOTA DESTRUIDA')
+            }
         } else {
             temp[x_pos][y_pos] = M
             setAnnouncement('Fallaste...')
@@ -124,6 +132,12 @@ const Tile = ( {
                 setBoard([...temp])
             }
         }
+    }
+
+    const gameFinished = () => {
+        let kills = killCount.reduce((total, a) => total + a, 0)
+        console.log(kills)
+        return kills == 13
     }
 
     const unnocupiedVertical = () => {

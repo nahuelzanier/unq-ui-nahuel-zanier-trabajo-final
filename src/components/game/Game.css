@@ -9,11 +9,20 @@
     font-family: 'Courier New', Courier, monospace;
     font-size: 50px;
     font-style: oblique;
+    margin-bottom: 0px;
 }
 
 .Announcement {
-    margin-left: 0px;
+    margin-left: 460px;
     font-family: 'Courier New', Courier, monospace;
     font-size: 20px;
     font-style: oblique;
+}
+
+.button {
+    margin-left: 535px;
+}
+
+.titleDiv {
+    display:flex
 }

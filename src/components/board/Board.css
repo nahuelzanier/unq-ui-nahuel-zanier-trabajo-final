@@ -9,9 +9,25 @@
     margin-bottom: 10px;
 }
 
+.PlayerProfile {
+    display:flex
+}
+
+.ProfButton {
+    margin-left: 5px;
+    height: 20px;
+    margin-top: 32px;
+}
+
 .Stats {
     margin: 0px;
     font-size: larger;
     font-family: 'Courier New', Courier, monospace;
     margin-bottom: 10px;
+}
+
+.nameInput {
+    margin-top: 29px;
+    font-size: 30px;
+    font-family: 'Courier New', Courier, monospace;
 }
