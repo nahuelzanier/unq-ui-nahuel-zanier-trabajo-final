@@ -10,25 +10,25 @@ export const H = 'hit'
 export const M = 'miss'
 
 const LANCHA = {
-    type: 'lancha',
+    type: 'Lancha',
     size: 2,
     tag: DD,
     selector: 0
 }
 const SUBMARINO = {
-    type: 'submarino',
+    type: 'Submarino',
     size: 3,
     tag: SB,
     selector: 1
 }
 const CRUCERO = {
-    type: 'crucero',
+    type: 'Crucero',
     size: 4,
     tag: BC,
     selector: 2
 }
 const PORTAAVIONES = {
-    type: 'portaaviones',
+    type: 'Portaaviones',
     size: 5,
     tag: AV,
     selector: 3

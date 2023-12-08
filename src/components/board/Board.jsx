@@ -27,7 +27,7 @@ const Board = ( {
     }
 
     const handleNameChange = () => {
-        setPlayerName(event.target.value)
+        setPlayerName(event.target.value)       
     }
 
     return (

@@ -1,5 +1,5 @@
 import './Tile.css'
-import { AV, BC, SB, DD, E, S, H, M, ships } from '../../game_logic/helpers'
+import { E, H, M, ships } from '../../game_logic/helpers'
 import Ship from '../tile_content/Ship'
 import EmptyTile from '../tile_content/EmptyTile'
 import Miss from '../tile_content/Miss'
@@ -31,7 +31,7 @@ const Tile = ( {
             placeShip()
         }
         else {
-            if (!againstPlayer){
+            if (!againstPlayer && !gameFinished()){
                 if (myTurn != turn){
                     if (isPlayer){
                         cpu_attack()
@@ -41,6 +41,9 @@ const Tile = ( {
                         setTurn((turn+1)%2)
                     }
                 }
+            } else if (!gameFinished() && myTurn!=turn && board[x][y]!=H && board[x][y]!=M) {
+                attack(x,y)
+                setTurn((turn+1)%2)
             }
         }
     }
@@ -163,9 +166,9 @@ const Tile = ( {
 
     const updateAnnouncement = (index) => {
         if (ships[index].size - killCount[index] == 1){
-            return ('Hundiste mi ' + ships[index].type + '!!!')
+            return (ships[index].type + ' de ' + playerName + ' hundido!!!')
         } else {
-            return ('Golpeaste a mi ' + ships[index].type + '!')
+            return (ships[index].type + ' de ' + playerName + ' golpeado!')
         }        
     }
 
