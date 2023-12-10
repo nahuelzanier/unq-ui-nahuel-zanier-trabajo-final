@@ -4,9 +4,12 @@ import './Row.css'
 const Row = ( { 
     playerName,
     setPlayerName,
+    oponentName,
     againstPlayer, 
     isPlayer, 
     gameStart,
+    gameFinished,
+    setGameFinished,
     setAnnouncement,
     myTurn, 
     turn, 
@@ -17,6 +20,8 @@ const Row = ( {
     y, 
     board, 
     setBoard, 
+    records,
+    setRecords,
     selectedShip, 
     selectedPosition, 
     shipsPlaced, 
@@ -27,9 +32,12 @@ const Row = ( {
                 tiles.map( (tile, index) => <Tile key={index}
                                                   playerName={playerName}
                                                   setPlayerName={setPlayerName}
+                                                  oponentName={oponentName}
                                                   againstPlayer={againstPlayer}
                                                   isPlayer={isPlayer}
                                                   gameStart={gameStart}
+                                                  gameFinishedProp={gameFinished}
+                                                  setGameFinished={setGameFinished}
                                                   setAnnouncement={setAnnouncement}
                                                   myTurn={myTurn}
                                                   turn={turn}
@@ -40,6 +48,8 @@ const Row = ( {
                                                   x={index}
                                                   board={board}
                                                   setBoard={setBoard}
+                                                  records={records}
+                                                  setRecords={setRecords}
                                                   selectedShip={selectedShip}
                                                   selectedPosition={selectedPosition}
                                                   shipsPlaced={shipsPlaced}

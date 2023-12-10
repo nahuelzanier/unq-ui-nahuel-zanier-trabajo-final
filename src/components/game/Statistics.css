@@ -1,0 +1,15 @@
+.Statistics {
+    margin-top: 60px;
+    width: 600px;
+}
+
+.titulo {
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 5px;
+    margin-top: 40px;
+}
+
+.buttonVolver {
+    margin-top: 20px;
+}
+

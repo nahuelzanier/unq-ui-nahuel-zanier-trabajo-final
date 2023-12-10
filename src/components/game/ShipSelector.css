@@ -39,3 +39,9 @@
     font-size: larger;
     font-style: oblique;
 }
+
+.buttonEstadisticas {
+    white-space: nowrap;
+    margin-left: 110px;
+    margin-top: 10px;
+}

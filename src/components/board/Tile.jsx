@@ -8,9 +8,12 @@ import Hit from '../tile_content/Hit'
 const Tile = ( { 
     playerName,
     setPlayerName,
+    oponentName,
     againstPlayer,
     isPlayer, 
     gameStart,
+    gameFinishedProp,
+    setGameFinished,
     setAnnouncement,
     myTurn, 
     turn, 
@@ -21,6 +24,8 @@ const Tile = ( {
     y, 
     board, 
     setBoard, 
+    records,
+    setRecords,
     selectedShip, 
     selectedPosition, 
     shipsPlaced, 
@@ -31,7 +36,7 @@ const Tile = ( {
             placeShip()
         }
         else {
-            if (!againstPlayer && !gameFinished()){
+            if (!againstPlayer && !gameFinishedProp){
                 if (myTurn != turn){
                     if (isPlayer){
                         cpu_attack()
@@ -41,10 +46,11 @@ const Tile = ( {
                         setTurn((turn+1)%2)
                     }
                 }
-            } else if (!gameFinished() && myTurn!=turn && board[x][y]!=H && board[x][y]!=M) {
+            } else if (!gameFinishedProp && myTurn!=turn && board[x][y]!=H && board[x][y]!=M) {
                 attack(x,y)
                 setTurn((turn+1)%2)
             }
+            
         }
     }
 
@@ -65,7 +71,8 @@ const Tile = ( {
             setAnnouncement(updateAnnouncement(temp[x_pos][y_pos]))
             temp[x_pos][y_pos] = H
             if (gameFinished()){
-                setPlayerName(playerName + ': FLOTA DESTRUIDA')
+                setAnnouncement('GANADOR: ' + oponentName)
+                updateRecords()
             }
         } else {
             temp[x_pos][y_pos] = M
@@ -81,7 +88,8 @@ const Tile = ( {
             setAnnouncement(updateAnnouncement(temp[x_pos][y_pos]))
             temp[x_pos][y_pos] = H
             if (gameFinished()){
-                setPlayerName(playerName + ': FLOTA DESTRUIDA')
+                setAnnouncement('GANADOR: ' + oponentName)
+                updateRecords()
             }
         } else {
             temp[x_pos][y_pos] = M
@@ -139,7 +147,7 @@ const Tile = ( {
 
     const gameFinished = () => {
         let kills = killCount.reduce((total, a) => total + a, 0)
-        console.log(kills)
+        setGameFinished(kills == 13)
         return kills == 13
     }
 
@@ -212,6 +220,19 @@ const Tile = ( {
             default:
                 return <div>Something went wrong</div>
         }
+    }
+
+    const updateRecords = () => {
+        let recTemp = [...records]
+        let currRecord = (recTemp.find((record) => record[0]==oponentName))
+        currRecord = currRecord ? [oponentName, currRecord[1]+1] : [oponentName, 1]
+        recTemp = recTemp.filter((record) => record[0]!=oponentName)
+        recTemp.push(currRecord)
+        recTemp = recTemp.sort((r1, r2) => r2[1] - r1[1])
+        if (recTemp.length > 16) {
+            recTemp.pop()
+        }
+        setRecords(recTemp)
     }
 
     return (

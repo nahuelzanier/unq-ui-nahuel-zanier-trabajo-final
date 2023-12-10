@@ -5,6 +5,7 @@ const ShipSelector = ( {
     shipsPlaced,
     setSelectedPosition,
     setAnnouncement,
+    setShowStatistics,
     setGameStart } ) => {
 
     const handleShipChange = () => {
@@ -18,6 +19,10 @@ const ShipSelector = ( {
             setAnnouncement('Primer disparo')
             setGameStart(true)
         }
+    }
+
+    const toggleStatistics = () => {
+        setShowStatistics(true)
     }
 
     return (
@@ -53,6 +58,8 @@ const ShipSelector = ( {
                 </div>
             </div>
             <button className="start_button" onClick={handleGameStart}>EMPEZAR JUEGO</button>
+            <br></br>
+            <button className="buttonEstadisticas" onClick={toggleStatistics}>ESTADISTICAS</button>
         </div>
     )
 }

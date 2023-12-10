@@ -1,19 +1,24 @@
 import Row from "./Row"
 import './Board.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const Board = ( { 
     playerName,
     setPlayerName,
+    oponentName,
     againstPlayer,
     isPlayer, 
     gameStart,
+    gameFinished,
+    setGameFinished,
     setAnnouncement,
     myTurn, 
     turn, 
     setTurn, 
     board, 
     setBoard, 
+    records,
+    setRecords,
     selectedShip, 
     selectedPosition, 
     shipsPlaced, 
@@ -30,6 +35,10 @@ const Board = ( {
         setPlayerName(event.target.value)       
     }
 
+    useEffect(() => {
+        setKillCount([0,0,0,0])
+    }, [gameStart])
+
     return (
         <div>
             <div className="PlayerProfile">
@@ -45,9 +54,12 @@ const Board = ( {
                     board.map((row, index) => <Row key={index}
                                                 playerName={playerName}
                                                 setPlayerName={setPlayerName}
+                                                oponentName={oponentName}
                                                 againstPlayer={againstPlayer}
                                                 isPlayer={isPlayer}
                                                 gameStart={gameStart}
+                                                gameFinished={gameFinished}
+                                                setGameFinished={setGameFinished}
                                                 setAnnouncement={setAnnouncement}
                                                 myTurn={myTurn}
                                                 turn={turn}
@@ -58,6 +70,8 @@ const Board = ( {
                                                 y={index} 
                                                 board={board}
                                                 setBoard={setBoard}
+                                                records={records}
+                                                setRecords={setRecords}
                                                 selectedShip={selectedShip}
                                                 selectedPosition={selectedPosition} 
                                                 shipsPlaced={shipsPlaced}
